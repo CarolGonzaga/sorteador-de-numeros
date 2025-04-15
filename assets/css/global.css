@@ -58,12 +58,13 @@
 html {
     color: var(--content-primary);
     font-family: var(--font-roboto-flex);
+    background-color: var(--background-primary);
 }
 
 body {
     width: 100%;
     height: 100%;
-    background-color: var(--background-primary);
+    background: url(../images/Shapes.png) no-repeat center center fixed;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -77,4 +78,61 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
     appearance: textfield;
     -moz-appearance: textfield;
+}
+
+button {
+    width: 100%;
+    height: 3.51rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    background-color: var(--background-tertiary);
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+
+    color: var(--content-primary);
+    font: var(--label-medium);
+    text-transform: uppercase;
+}
+
+.glow-border {
+    margin-top: 2.5rem;
+    width: 101%;
+    display: inline-block;
+    padding: 1.6px;
+    border-radius: 0.5rem;
+    background-color: transparent;
+    transition: background 0.3s ease;
+}
+
+/* estilo com brilho animado */
+.glow-border.animate-border {
+    background: linear-gradient(90deg, #77C0AF, #D1DC97, #E9A9B3, #D586E0, #91A1FA, #77C0AF);
+    background-size: 400%;
+    animation: borderFlow 2s linear infinite;
+}
+
+/* - Keyframes para a borda do botão */
+@keyframes borderFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+@media (min-width: 1124px) {
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background: url(../images/Shapes.png) repeat center / contain;
+    }
 }

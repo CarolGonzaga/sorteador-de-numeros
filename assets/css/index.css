@@ -1,4 +1,7 @@
 @import url(global.css);
+@import url(draw-container.css);
+@import url(draw-result.css);
+@import url(instructions.css);
 
 main {
     display: flex;
@@ -8,7 +11,12 @@ main {
     width: 100%;
     height: 100%;
     padding: 2.75rem 2.25rem;
-    background: url(../images/Shapes.png) no-repeat center center fixed;
+
+    &>img {
+        max-width: 10.75rem;
+        height: auto;
+        margin-bottom: 2.875rem;
+    }
 }
 
 header {
@@ -16,13 +24,7 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2.875rem;
     margin-bottom: 2.625rem;
-
-    & img {
-        max-width: 10.75rem;
-        height: auto;
-    }
 
     & div {
         display: flex;
@@ -49,179 +51,62 @@ header {
 
 }
 
-.draw-container {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
+@media (min-width: 1124px) {
 
-    & .draw-header h2 {
-        font: var(--label-medium);
-        text-transform: uppercase;
-        margin-bottom: 0.125rem;
-    }
-
-    & .draw-header p {
-        font: var(--paragraph-medium);
-        color: var(--content-tertiary);
-    }
-
-    & .draw-header .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
+    main {
+        width: 68.75rem;
+        height: auto;
         padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-    }
 
-    form {
-        display: flex;
-        flex-direction: column;
-
-        & fieldset {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 0.75rem;
-
-            border: none;
-            margin-bottom: 1.25rem;
-
-            & .input-container {
-                display: flex;
-                flex-direction: column;
-                gap: 0.5rem;
-
-                & label {
-                    font: var(--label-medium);
-                    color: var(--content-secondary);
-                    text-transform: uppercase;
-                    text-align: center;
-                }
-
-                & input {
-                    width: 100%;
-                    height: 3.5rem;
-                    padding: 0.25rem .5rem;
-                    border-radius: 0.5rem;
-                    border: none;
-                    outline: none;
-
-                    background-color: var(--background-secondary);
-
-                    color: var(--content-primary);
-                    font: var(--display-small);
-                    text-align: center;
-
-                    &:focus {
-                        /* box-shadow: 0 0 0 2px var(--gradient-content); */
-                    }
-                }
-            }
+        &>img {
+            margin-right: auto;
+            margin-bottom: 89px;
         }
 
-        & .draw-repeat {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 0.75rem;
-            height: 3rem;
-
-            input[type="checkbox"] {
-                display: none;
-            }
-
-            .button {
-                background: var(--content-tertiary);
-                width: 1.875rem;
-                height: 1.25rem;
-                padding: 0.188rem;
-                border-radius: 1rem;
-                cursor: pointer;
-                position: relative;
-
-                transition: background 0.4s ease-in-out;
-
-                &::before {
-                    content: "";
-                    position: absolute;
-                    background-color: var(--content-primary);
-                    border-radius: 50%;
-                    width: 0.875rem;
-                    height: 0.875rem;
-                    top: 50%;
-                    left: 0.188rem;
-                    transform: translateY(-50%);
-                    transition: left 0.3s ease-in-out;
-                }
-            }
-
-            #check:checked+.button {
-                background: var(--gradient-content);
-            }
-
-            #check:checked+.button::before {
-                left: calc(100% - 0.875rem - 0.188rem);
-            }
-        }
-
-        & button {
-            margin-block: 2.5rem 5rem;
-            width: 100%;
-            height: 3.5rem;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-
-            background-color: var(--background-tertiary);
-            border: none;
-            border-radius: 0.5rem;
-            cursor: pointer;
-
-            color: var(--content-primary);
-            font: var(--label-medium);
-            text-transform: uppercase;
+        & .wrapper {
+            display: grid;
+            grid-template-areas:
+                "header draw-container"
+                "instructions draw-container";
+            grid-template-columns: 31.875rem 30.125rem;
+            grid-template-rows: auto auto;
+            gap: 0 6.75rem;
+            padding: 0;
         }
     }
-}
 
+    header {
+        grid-area: header;
+        align-self: center;
+        margin: 0;
 
+        & div {
+            gap: 0.75rem;
 
-
-.instructions {
-    display: flex;
-    flex-direction: column;
-    gap: 2.25rem;
-
-    &>div {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        grid-template-rows: 1fr 2fr;
-        column-gap: .5rem;
-
-        & img {
-            grid-row: 1 / 3;
-            grid-column: 1 / 2;
+            & h1 {
+                font: var(--display-large);
+                margin-bottom: 2.375rem;
+            }
         }
+    }
 
-        & h3 {
-            grid-row: 1 / 2;
-            grid-column: 2 / 3;
-            font: var(--paragraph-medium);
-            color: var(--content-brand);
+    .instructions {
+        grid-area: instructions;
+        align-self: center;
+        max-width: 24.125rem;
+        margin: 0;
+    }
+
+    .draw-container {
+        grid-area: draw-container;
+        justify-content: center;
+
+        & .draw-header p {
+            font: var(--paragraph-large);
         }
+    }
 
-        & p {
-            grid-row: 2 / 3;
-            grid-column: 2 / 3;
-            font: var(--paragraph-small);
-            color: var(--content-secondary);
-        }
-
+    .draw-result {
+        grid-area: draw-result;
     }
 }
