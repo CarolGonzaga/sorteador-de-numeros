@@ -62,9 +62,15 @@ html {
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
     width: 100%;
     height: 100%;
-    background: url(../images/Shapes.png) no-repeat center center fixed;
+
+    background: url(../images/Shapes.png) no-repeat center/cover;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -78,6 +84,11 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
     appearance: textfield;
     -moz-appearance: textfield;
+}
+
+a {
+    color: var(--content-brand);
+    text-decoration: none;
 }
 
 button {
@@ -101,9 +112,10 @@ button {
 
 .glow-border {
     margin-top: 2.5rem;
-    width: 101%;
-    display: inline-block;
     padding: 1.6px;
+    width: 101%;
+
+    display: inline-block;
     border-radius: 0.5rem;
     background-color: transparent;
     transition: background 0.3s ease;
@@ -114,6 +126,19 @@ button {
     background: linear-gradient(90deg, #77C0AF, #D1DC97, #E9A9B3, #D586E0, #91A1FA, #77C0AF);
     background-size: 400%;
     animation: borderFlow 2s linear infinite;
+}
+
+footer {
+    width: 100%;
+    height: 2.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    background-color: var(--background-tertiary);
+    font: var(--paragraph-small);
 }
 
 /* - Keyframes para a borda do botão */
@@ -129,10 +154,14 @@ button {
 
 @media (min-width: 1124px) {
     body {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        padding-top: 4.75rem;
         height: 100vh;
         background: url(../images/Shapes.png) repeat center / contain;
+    }
+
+    footer {
+        padding: 1rem;
+        height: 3.5rem;
+        font: var(--paragraph-medium);
     }
 }
